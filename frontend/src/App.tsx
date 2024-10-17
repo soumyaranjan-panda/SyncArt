@@ -2,17 +2,18 @@ import Forms from "./components/Forms/Forms";
 import { Routes, Route } from "react-router-dom";
 import RoomPage from "./pages/RoomPage";
 import { v4 as uuidv4 } from "uuid";
-
 import { io, Socket } from "socket.io-client";
 import { useEffect } from "react";
 
-// Update the server URL to match your actual server port
-const server = "http://localhost:5000";
+// Access the server URL from the environment variable
+const server = import.meta.env.REACT_APP_API_URL || "http://localhost:5000";
+
+// Initialize socket connection
 const socket: Socket = io(server, {
   transports: ["websocket"]
 });
-function App() {
 
+function App() {
   useEffect(() => {
     const handleUserJoined = (data: { success: boolean }) => {
       if (data.success) {
