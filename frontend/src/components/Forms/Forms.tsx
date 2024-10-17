@@ -1,16 +1,6 @@
 import { Socket } from "socket.io-client"; // Only import Socket
 import CreateRoomForm from "./CreateRoomForm";
 import JoinRoomForm from "./JoinRoomForm";
-
-// Define the RoomData interface
-interface RoomData {
-    name: string;
-    roomId: string;
-    userId: string;
-    host: boolean;
-    presenter: boolean;
-}
-
 interface FormsProps {
     uuid: () => string; // Function type for UUID
     socket: Socket; // Socket type

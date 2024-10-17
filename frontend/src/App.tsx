@@ -4,7 +4,7 @@ import RoomPage from "./pages/RoomPage";
 import { v4 as uuidv4 } from "uuid";
 
 import { io, Socket } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // Update the server URL to match your actual server port
 const server = "http://localhost:5000";
