@@ -21,8 +21,6 @@ interface RoomData {
 }
 
 function App() {
-  const [user, setUser] = useState<RoomData | null>(null);
-  console.log(user);
 
   useEffect(() => {
     const handleUserJoined = (data: { success: boolean }) => {
@@ -49,7 +47,6 @@ function App() {
             <Forms
               uuid={uuidv4}
               socket={socket}
-              setUser={setUser}
             />
           }
         />

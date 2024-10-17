@@ -13,10 +13,9 @@ interface RoomData {
 interface FormsProps {
     uuid: () => string;
     socket: Socket;
-    setUser: (user: RoomData | null) => void;
 }
 
-export default function CreateRoomForm({ uuid, socket, setUser }: FormsProps) {
+export default function CreateRoomForm({ uuid, socket }: FormsProps) {
     const [name, setName] = useState("");
     const [roomId, setRoomId] = useState("");
     const [copySuccess, setCopySuccess] = useState("");
@@ -40,7 +39,6 @@ export default function CreateRoomForm({ uuid, socket, setUser }: FormsProps) {
                 host: true,
                 presenter: true,
             };
-            setUser(userData);
             socket.emit("userJoined", userData);
             navigate(`/${roomId}`);
         }

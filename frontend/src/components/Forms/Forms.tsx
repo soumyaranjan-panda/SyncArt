@@ -14,18 +14,17 @@ interface RoomData {
 interface FormsProps {
     uuid: () => string; // Function type for UUID
     socket: Socket; // Socket type
-    setUser: (user: RoomData | null) => void; // Correctly typed setUser
 }
 
-export default function Forms({ uuid, socket, setUser }: FormsProps) {
+export default function Forms({ uuid, socket }: FormsProps) {
     return (
         <div className="container mx-auto md:mt-5 p-4 flex items-center justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="w-full">
-                    <CreateRoomForm uuid={uuid} socket={socket} setUser={setUser} />
+                    <CreateRoomForm uuid={uuid} socket={socket} />
                 </div>
                 <div className="w-full">
-                    <JoinRoomForm uuid={uuid} socket={socket} setUser={setUser}/>
+                    <JoinRoomForm uuid={uuid} socket={socket} />
                 </div>
             </div>
         </div>

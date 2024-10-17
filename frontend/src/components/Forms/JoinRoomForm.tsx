@@ -13,10 +13,9 @@ interface RoomData {
 interface JoinRoomFormProps {
     uuid: () => string;
     socket: Socket;
-    setUser: (user: RoomData | null) => void;
 }
 
-export default function JoinRoomForm({ uuid, socket, setUser }: JoinRoomFormProps) {
+export default function JoinRoomForm({ uuid, socket }: JoinRoomFormProps) {
     const [name, setName] = useState("");
     const [roomId, setRoomId] = useState("");
     const navigate = useNavigate();
@@ -30,7 +29,6 @@ export default function JoinRoomForm({ uuid, socket, setUser }: JoinRoomFormProp
             host: false,
             presenter: false,
         };
-        setUser(userData);
         socket.emit("userJoined", userData);
         navigate(`/${roomId}`);
     };
