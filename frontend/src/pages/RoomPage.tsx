@@ -28,7 +28,7 @@ interface User {
     name: string;
 }
 
-const RoomPage = ({ socket, server }: RoomPageProps) => {
+const RoomPage = ({ socket}: RoomPageProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 

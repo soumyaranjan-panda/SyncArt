@@ -11,15 +11,6 @@ const server = "http://localhost:5000";
 const socket: Socket = io(server, {
   transports: ["websocket"]
 });
-
-interface RoomData {
-  name: string;
-  roomId: string;
-  userId: string;
-  host: boolean;
-  presenter: boolean;
-}
-
 function App() {
 
   useEffect(() => {
