@@ -22,6 +22,7 @@ interface RoomData {
 
 function App() {
   const [user, setUser] = useState<RoomData | null>(null);
+  console.log(user);
 
   useEffect(() => {
     const handleUserJoined = (data: { success: boolean }) => {
