@@ -6,7 +6,7 @@ import { io, Socket } from "socket.io-client";
 import { useEffect } from "react";
 
 // Access the server URL from the environment variable
-const server = import.meta.env.REACT_APP_API_URL || "http://localhost:5000";
+const server = "https://syncart.onrender.com";
 
 // Initialize socket connection
 const socket: Socket = io(server, {
