@@ -1,10 +1,13 @@
 # Sync App
+[Frontend](https://sync-art.vercel.app/) | [Backend](https://syncart.onrender.com) 
 
 A real-time collaborative application built with React, TypeScript, and socket.io, designed for seamless synchronization and interaction between users in different rooms. The frontend is hosted on Vercel, and the backend is deployed on Render.
 
-## Demo
-[YouTube](https://www.youtube.com/watch?v=33xZUR5Of-w&t)
 
+
+## Demo
+
+[Watch on YouTube](https://www.youtube.com/watch?v=33xZUR5Of-w&t)
 
 ## Features
 
@@ -29,17 +32,22 @@ To set up the development environment locally:
    ```bash
    git clone https://github.com/yourusername/sync-app.git
    cd sync-app
+   ```
+
 2. **Frontend Setup**:
    ```bash
    cd frontend
    npm install
    npm run dev
+   ```
+
 3. **Backend Setup**:
    ```bash
    cd backend
    npm install
    npm run dev
-   
+   ```
+
 ## Usage
 
 ### Creating or Joining a Room:
@@ -57,13 +65,13 @@ To set up the development environment locally:
 
 ## API Endpoints
 
-| Method | Endpoint                        | Description                    |
-|--------|---------------------------------|--------------------------------|
-| GET    | /rooms/:roomId/users            | Get all the users in the room  |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /rooms/:roomId/users | Get all the users in the room |
 
 ## Folder Structure
 
-```bash
+```
 sync-app/
 ├── frontend/
 │   ├── public/
@@ -80,25 +88,25 @@ sync-app/
 ## Contributing
 
 1. Fork the repository and create a new branch:
-
-```bash
-git checkout -b feature-branch
-```
+   ```bash
+   git checkout -b feature-branch
+   ```
 
 2. Make your changes and commit:
+   ```bash
+   git commit -m "Add new feature"
+   ```
 
-```bash
-git commit -m "Add new feature"
-```
-
-3. Push to your forked repository and create a pull request.
-
-```bash
-git push origin -u feature-branch
-```
+3. Push to your forked repository and create a pull request:
+   ```bash
+   git push origin -u feature-branch
+   ```
 
 ## Troubleshooting
 
 - **Socket Connection Issues**: Ensure the backend is correctly running and the socket.io connection is established on the same port.
 - **CORS Errors**: Make sure the frontend URL is whitelisted in the backend CORS configuration.
 
+---
+
+© 2024 Sync App. All rights reserved.
