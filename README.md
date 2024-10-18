@@ -59,7 +59,7 @@ To set up the development environment locally:
 
 | Method | Endpoint                        | Description                    |
 |--------|---------------------------------|--------------------------------|
-| GET    | /api/rooms/:roomId/users        | Get all the users in the room  |
+| GET    | /rooms/:roomId/users            | Get all the users in the room  |
 
 ## Folder Structure
 
