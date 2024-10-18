@@ -3,7 +3,7 @@
 A real-time collaborative application built with React, TypeScript, and socket.io, designed for seamless synchronization and interaction between users in different rooms. The frontend is hosted on Vercel, and the backend is deployed on Render.
 
 ## Demo
-https://www.youtube.com/watch?v=bTV8PiENqo8
+[YouTube](https://www.youtube.com/watch?v=33xZUR5Of-w&t)
 
 
 ## Features
