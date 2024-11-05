@@ -10,7 +10,6 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
         methods: ["GET", "POST"]
     }
 });
@@ -19,29 +18,23 @@ const rooms = new Map();
 
 io.on("connection", (socket) => {
     console.log("A user connected");
-    let namex = "";
+    let username = "";
 
     socket.on("userJoined", (data) => {
         const { name, userId, roomId, host, presenter } = data;
-        namex = name;
-        console.log(`Name: ${name} UserId: ${userId} RoomId: ${roomId} Host: ${host} Presenter: ${presenter}`);
-        io.emit("userJoined", {name, userId, roomId, host, presenter});
+        username = name;
         socket.join(roomId);
         
         if (!rooms.has(roomId)) {
-            rooms.set(roomId, { users: new Set([{ userId, name }]), elements: [] });
+            rooms.set(roomId, { users: [{ userId, name }], elements: [] });
         } else {
-            rooms.get(roomId).users.add({ userId, name });
+            rooms.get(roomId).users.push({ userId, name });
         }
         
         // Log all users in the room
-        const usersInRoom = Array.from(rooms.get(roomId).users);
-        console.log(usersInRoom);
-        console.log(`Current users in room ${roomId}:\n`, usersInRoom);
-        
+        const usersInRoom = Array.from(rooms.get(roomId).users);        
         socket.emit("userIsJoined", { success: true });
         io.to(roomId).emit("updateUsers", usersInRoom);
-        socket.emit("updateDrawing", rooms.get(roomId).elements);
     });
 
     socket.on("drawElement", (data) => {
@@ -75,7 +68,7 @@ io.on("connection", (socket) => {
     socket.on("chatMessage", (data) => {
         const {roomId, message, userId } = data;
 
-        io.to(roomId).emit("chatMessage", message, namex);
+        io.to(roomId).emit("chatMessage", message, username);
     });
 
 
@@ -92,10 +85,9 @@ io.on("connection", (socket) => {
     });
 });
 
-// New endpoint to get users in a room
+// endpoint to get users in a room
 app.get("/rooms/:roomId/users", (req, res) => {
     const roomId = req.params.roomId;
-
     if (rooms.has(roomId)) {
         const users = Array.from(rooms.get(roomId).users);
         return res.json(users);
