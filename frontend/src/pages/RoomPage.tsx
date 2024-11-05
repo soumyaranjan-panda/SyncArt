@@ -28,7 +28,7 @@ interface User {
     name: string;
 }
 
-const RoomPage = ({ socket}: RoomPageProps) => {
+const RoomPage = ({ socket }: RoomPageProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
@@ -131,7 +131,7 @@ const RoomPage = ({ socket}: RoomPageProps) => {
                         roomId={roomId}
                     />
                 </main>
-                <div className="w-80 bg-white shadow-lg flex flex-col justify-between">
+                <div className="w-80 bg-white shadow-lg flex flex-col h-[100%] justify-between">
                     <div className=" flex flex-col gap-3 p-3">
                         {/* header */}
                         <header className="flex justify-between bg-white shadow-md p-4">

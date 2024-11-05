@@ -1,9 +1,9 @@
-import { Socket } from "socket.io-client"; // Only import Socket
+import { Socket } from "socket.io-client";
 import CreateRoomForm from "./CreateRoomForm";
 import JoinRoomForm from "./JoinRoomForm";
 interface FormsProps {
-    uuid: () => string; // Function type for UUID
-    socket: Socket; // Socket type
+    uuid: () => string;
+    socket: Socket;
 }
 
 export default function Forms({ uuid, socket }: FormsProps) {

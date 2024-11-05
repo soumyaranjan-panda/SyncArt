@@ -10,14 +10,13 @@ interface ChatBoxProps {
     sendMessage: (message: string) => void;
 }
 
-const ChatBox: React.FC<ChatBoxProps> = ({ messages, sendMessage }) => {
+const ChatBox = ({ messages, sendMessage }: ChatBoxProps) => {
     const [inputMessage, setInputMessage] = useState('');
-    const messagesEndRef = useRef<HTMLDivElement>(null);
 
+    const messagesEndRef = useRef<HTMLDivElement>(null);
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-
     useEffect(scrollToBottom, [messages]);
 
     const handleSend = (e: React.FormEvent) => {
@@ -29,8 +28,8 @@ const ChatBox: React.FC<ChatBoxProps> = ({ messages, sendMessage }) => {
     };
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="flex-1 overflow-y-auto p-4 space-y-2 max-h-80"> {/* Set a max height */}
+        <div className="flex flex-col">
+            <div className="flex-1 overflow-y-auto p-4 space-y-2 max-h-[16rem]"> {/* Set a max height */}
                 {messages.map((msg, index) => (
                     <div key={index} className="bg-gray-100 rounded-lg p-2">
                         <span className="font-bold">{msg.user}: </span>
