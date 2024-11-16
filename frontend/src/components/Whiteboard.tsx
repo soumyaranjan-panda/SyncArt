@@ -177,11 +177,6 @@ const Whiteboard = ({
             if (tool === "eraser") {
                 setElements(prevElements => [...prevElements, updatedElement]);
                 socket.emit("drawElement", { roomId, element: updatedElement });
-            } else {
-                setElements(prevElements => 
-                    prevElements.map(el => el === currentElement ? updatedElement : el)
-                );
-                socket.emit("updateElement", { roomId, element: updatedElement });
             }
         }
     };
