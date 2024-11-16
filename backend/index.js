@@ -76,7 +76,7 @@ io.on("connection", (socket) => {
 app.get("/rooms/:roomId/users", (req, res) => {
     const roomId = req.params.roomId;
     if (rooms.has(roomId)) {
-        const users = Array.from(rooms.get(roomId).users);
+        const users = [...rooms.get(roomId).users]
         return res.json(users);
     } else {
         return res.status(404).json({ message: "Room not found" });
