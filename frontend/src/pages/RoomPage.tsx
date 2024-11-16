@@ -43,7 +43,7 @@ const RoomPage = ({ socket }: RoomPageProps) => {
     const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
-        const currentRoomId = window.location.pathname.split("/").pop() || "";
+        const currentRoomId = window.location.pathname.split("/")[1] || "";
         setRoomId(currentRoomId);
 
         socket.on("userJoined", (data) => {
@@ -81,7 +81,11 @@ const RoomPage = ({ socket }: RoomPageProps) => {
         const previousElements = history[history.length - 1];
         setRedoStack((prevRedoStack) => [elements, ...prevRedoStack]);
         setElements(previousElements);
-        setHistory((prevHistory) => prevHistory.slice(0, -1));
+        setHistory((prevHistory) => {
+            const newHistory = [...prevHistory];
+            newHistory.pop();
+            return newHistory;
+        });
         socket.emit("updateDrawing", { roomId, elements: previousElements });
     };
 
@@ -90,7 +94,11 @@ const RoomPage = ({ socket }: RoomPageProps) => {
         const nextElements = redoStack[0];
         setHistory((prevHistory) => [...prevHistory, elements]);
         setElements(nextElements);
-        setRedoStack((prevRedoStack) => prevRedoStack.slice(1));
+        setRedoStack((prevRedoStack) => {
+            const newStack = [...prevRedoStack];
+            newStack.pop();
+            return newStack
+        });
         socket.emit("updateDrawing", { roomId, elements: nextElements });
     };
 
