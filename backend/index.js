@@ -44,18 +44,6 @@ io.on("connection", (socket) => {
         }
     });
 
-    socket.on("updateElement", (data) => {
-        const { roomId, element } = data;
-        if (rooms.has(roomId)) {
-            const roomElements = rooms.get(roomId).elements;
-            const index = roomElements.findIndex(el => el.id === element.id);
-            if (index !== -1) {
-                roomElements[index] = element;
-                socket.to(roomId).emit("updateElement", element);
-            }
-        }
-    });
-
     socket.on("updateDrawing", (data) => {
         const { roomId, elements } = data;
         if (rooms.has(roomId)) {
@@ -78,7 +66,7 @@ io.on("connection", (socket) => {
             if (userToRemove) {
                 room.users.delete(userToRemove);
                 io.to(roomId).emit("updateUsers", Array.from(room.users));
-                console.log(`User ${userToRemove.name} has disconnected. Remaining users in room ${roomId}:`, Array.from(room.users));
+                console.log(`User ${userToRemove.name} has disconnected. Remaining users in room ${roomId}:`);
             }
         });
     });
