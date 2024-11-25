@@ -19,7 +19,7 @@ A real-time collaborative application built with React, TypeScript, and socket.i
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, CSS
+- **Frontend**: React, TypeScript, Tailwind
 - **Backend**: Node.js, Express, socket.io
 - **Deployment**: Vercel (frontend), Render (backend)
 - **Tools**: GitHub for version control
